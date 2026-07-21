@@ -237,6 +237,48 @@
         transform: translateY(-1px);
     }
 
+    /* Botón "Vaciado" (rojo) - vacía los jugadores de su propia tabla */
+    .btn-vaciado {
+        background-color: #c62828;
+        border: 1px solid #8e0000;
+        display: none;
+    }
+    .btn-vaciado:hover {
+        background-color: #d32f2f;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transform: translateY(-1px);
+    }
+
+    /* Botón "Mover Jugadores" (naranja) - solo se habilita cuando la Tabla 1
+       (izquierda) haya sido vaciada; mueve los jugadores de esta tabla a la Tabla 1
+       y deja esta tabla lista para un nuevo llenado. */
+    .btn-mover-jugadores {
+        background-color: #e67e22;
+        color: var(--blanco);
+        border: 1px solid #b35c00;
+        padding: 8px 16px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        display: none;
+    }
+    .btn-mover-jugadores:hover:not(:disabled) {
+        background-color: #f39c12;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transform: translateY(-1px);
+    }
+    .btn-mover-jugadores:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+    }
+
     .btn-usuarios { 
         background-color: var(--dorado); 
         border: 1px solid var(--verde-primario);
@@ -522,6 +564,12 @@
         text-transform: uppercase;
     }
 
+    /* Contenedor que envuelve cada tabla; en pantallas grandes permite scroll interno
+       para que el marco de la tarjeta NUNCA se rompa, sin importar cuántas filas existan. */
+    .tabla-contenedor-scroll {
+        width: 100%;
+    }
+
     /* Estilos Elegantes de la Tabla */
     .tabla-salidas {
         width: 100%;
@@ -620,6 +668,118 @@
     /* ==========================================================================
        MEDIA QUERIES - OPTIMIZACIÓN COMPLETA PARA MÓVILES (TELÉFONOS Y TABLETS)
        ========================================================================== */
+
+    /* ==========================================================================
+       MODO PANTALLA DE SEÑALIZACIÓN (TV de 55" - 121.8 x 68.5 cm, 16:9, ~1920x1080)
+       Se activa en cualquier ventana ancha (>=1600px) sin importar la resolución
+       exacta del panel: todo se dimensiona con vw/vh para llenar la pantalla
+       completa, sin scroll de página y sin que el marco de las tarjetas se rompa.
+       ========================================================================== */
+    @media (min-width: 1600px) {
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            padding: 1.4vh 1.6vw;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .barra-global-admin {
+            flex: 0 0 auto;
+            margin-bottom: 1.2vh;
+        }
+
+        .contenedor-doble {
+            max-width: 100%;
+            flex: 1 1 auto;
+            min-height: 0;
+            gap: 1.6vw;
+        }
+
+        .pantalla-contenedor {
+            flex: 1 1 0;
+            max-width: none;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            padding: 2vh 1.8vw;
+        }
+
+        .zona-superior-imagen {
+            flex: 0 0 auto;
+            margin: -2vh -1.8vw 1.8vh -1.8vw;
+            padding: 1.4vh 1.8vw 0 1.8vw;
+        }
+
+        .barra-reloj {
+            margin-bottom: 1.4vh;
+        }
+
+        .reloj-digital {
+            font-size: 1.5rem;
+            padding: 10px 30px;
+            letter-spacing: 2px;
+        }
+
+        .logo-club-img {
+            width: 140px;
+            height: 140px;
+        }
+
+        .encabezado {
+            padding-bottom: 2vh;
+            margin-bottom: 2vh;
+        }
+
+        .fecha-central {
+            font-size: 2.6rem;
+        }
+
+        .texto-info h2 {
+            font-size: 1.8rem;
+        }
+
+        .texto-info p {
+            font-size: 1.05rem;
+        }
+
+        .btn-login, .btn-guardar, .btn-usuarios, .btn-config-hora, .btn-vaciado, .btn-mover-jugadores {
+            font-size: 1rem;
+            padding: 13px 24px;
+        }
+
+        .usuario-logeado {
+            font-size: 1.05rem;
+            padding: 10px 20px;
+        }
+
+        /* La tabla ocupa todo el espacio vertical restante de la tarjeta; si el
+           contenido excede ese espacio, se desplaza SOLO dentro de este recuadro,
+           el marco exterior nunca se deforma. */
+        .tabla-contenedor-scroll {
+            flex: 1 1 auto;
+            min-height: 0;
+            overflow-y: auto;
+        }
+
+        .tabla-salidas {
+            font-size: 1.25rem;
+        }
+
+        .tabla-salidas th {
+            font-size: 1rem;
+            padding: 20px 14px;
+        }
+
+        .tabla-salidas td {
+            padding: 16px 14px;
+        }
+    }
 
     @media (max-width: 1400px) {
         .pantalla-contenedor {
@@ -791,11 +951,13 @@
                     <div class="admin-actions">
                         <button class="btn-config-hora" data-tabla="1" id="btnConfigHora1">🕒 Config. Fecha/Hora</button>
                         <button class="btn-guardar" data-tabla="1" id="btnGuardarCambios1">💾 Guardar</button>
+                        <button class="btn-vaciado" data-tabla="1" id="btnVaciado1">🗑️ Vaciado</button>
                     </div>
                 </div>
             </header>
         </div>
 
+        <div class="tabla-contenedor-scroll">
         <table class="tabla-salidas" id="tablaDatosGolf1">
             <colgroup>
                 <col style="width: 5%;">
@@ -1022,6 +1184,7 @@
                 </tr>
             </tbody>
         </table>
+        </div>
     </div>
 
     <!-- ============================================================ -->
@@ -1050,12 +1213,15 @@
                     </div>
                     <div class="admin-actions">
                         <button class="btn-config-hora" data-tabla="2" id="btnConfigHora2">🕒 Config. Fecha/Hora</button>
+                        <button class="btn-mover-jugadores" data-tabla-origen="2" data-tabla-destino="1" id="btnMoverJugadores2" disabled title="Se habilita cuando la Tabla 1 haya sido vaciada">➡️ Mover Jugadores</button>
                         <button class="btn-guardar" data-tabla="2" id="btnGuardarCambios2">💾 Guardar</button>
+                        <button class="btn-vaciado" data-tabla="2" id="btnVaciado2">🗑️ Vaciado</button>
                     </div>
                 </div>
             </header>
         </div>
 
+        <div class="tabla-contenedor-scroll">
         <table class="tabla-salidas" id="tablaDatosGolf2">
             <colgroup>
                 <col style="width: 5%;">
@@ -1282,6 +1448,7 @@
                 </tr>
             </tbody>
         </table>
+        </div>
     </div>
 
   </div>
@@ -1380,6 +1547,8 @@
       // Botones de Guardar y Config. Hora existen una vez POR TABLA (son independientes)
       const botonesGuardar = document.querySelectorAll('.btn-guardar');
       const botonesConfigHora = document.querySelectorAll('.btn-config-hora');
+      const botonesVaciado = document.querySelectorAll('.btn-vaciado');
+      const btnMoverJugadores2 = document.getElementById('btnMoverJugadores2');
 
       let usuarioActual = null;
       let rolActual = null;
@@ -1502,6 +1671,9 @@
           // porque la sesión (login) es global.
           botonesGuardar.forEach(btn => { btn.style.display = activar ? 'inline-block' : 'none'; });
           botonesConfigHora.forEach(btn => { btn.style.display = activar ? 'inline-block' : 'none'; });
+          botonesVaciado.forEach(btn => { btn.style.display = activar ? 'inline-block' : 'none'; });
+          btnMoverJugadores2.style.display = activar ? 'inline-block' : 'none';
+          actualizarEstadoBotonMover();
       }
 
       // Modales Triggers (GLOBALES)
@@ -1699,6 +1871,99 @@
           });
       });
 
+      // =========================================================================================
+      // VACIADO DE JUGADORES Y MOVIMIENTO ENTRE TABLAS
+      // =========================================================================================
+      // Guarda de inmediato el contenido actual de una tabla en su propio espacio de LocalStorage.
+      function guardarTablaEnStorage(numTabla) {
+          const cfg = configTablas[numTabla];
+          localStorage.setItem(cfg.keyDatos, document.getElementById(cfg.idCuerpo).innerHTML);
+      }
+
+      // Vacía únicamente las columnas de jugadores (Jugador 1-5) de todas las filas de una tabla,
+      // sin tocar Hoyo, Horario, Campo ni Detalles.
+      function vaciarJugadoresDeTabla(numTabla) {
+          const cfg = configTablas[numTabla];
+          document.querySelectorAll(`#${cfg.idCuerpo} .col-jugador`).forEach(celda => {
+              celda.textContent = '';
+          });
+      }
+
+      // Revisa el estado guardado y habilita/deshabilita el botón "Mover Jugadores" de la Tabla 2.
+      function actualizarEstadoBotonMover() {
+          const habilitado = localStorage.getItem('habilitarMoverJugadores_2') === 'true';
+          btnMoverJugadores2.disabled = !habilitado;
+      }
+
+      // Botones "Vaciado" (uno por tabla, color rojo)
+      botonesVaciado.forEach(btn => {
+          btn.addEventListener('click', () => {
+              const numTabla = btn.getAttribute('data-tabla');
+
+              if (!confirm(`¿Deseas vaciar todos los jugadores de la Tabla ${numTabla}? Esta acción no se puede deshacer.`)) {
+                  return;
+              }
+
+              vaciarJugadoresDeTabla(numTabla);
+              guardarTablaEnStorage(numTabla);
+
+              // Si se vació la Tabla 1 (izquierda), se habilita "Mover Jugadores" en la Tabla 2 (derecha).
+              if (numTabla === '1') {
+                  localStorage.setItem('habilitarMoverJugadores_2', 'true');
+                  actualizarEstadoBotonMover();
+              }
+
+              alert(`Los jugadores de la Tabla ${numTabla} han sido vaciados.`);
+          });
+      });
+
+      // Botón "Mover Jugadores" (Tabla 2, color naranja) - solo funciona si está habilitado
+      // (es decir, después de que la Tabla 1 haya sido vaciada). Mueve todos los jugadores
+      // registrados en la Tabla 2 hacia la Tabla 1 (fila por fila, según el mismo Hoyo) y deja
+      // la Tabla 2 vacía y lista para un nuevo llenado.
+      btnMoverJugadores2.addEventListener('click', () => {
+          if (btnMoverJugadores2.disabled) { return; }
+
+          if (!confirm('¿Deseas mover todos los jugadores de la Tabla 2 hacia la Tabla 1? La Tabla 2 quedará vacía para un nuevo llenado.')) {
+              return;
+          }
+
+          const numOrigen = btnMoverJugadores2.getAttribute('data-tabla-origen'); // '2'
+          const numDestino = btnMoverJugadores2.getAttribute('data-tabla-destino'); // '1'
+          const cfgOrigen = configTablas[numOrigen];
+          const cfgDestino = configTablas[numDestino];
+
+          const filasOrigen = document.querySelectorAll(`#${cfgOrigen.idCuerpo} tr`);
+          const filasDestino = document.querySelectorAll(`#${cfgDestino.idCuerpo} tr`);
+
+          filasOrigen.forEach((filaOrigen, indice) => {
+              const filaDestino = filasDestino[indice];
+              if (!filaDestino) { return; }
+
+              const celdasJugadorOrigen = filaOrigen.querySelectorAll('.col-jugador');
+              const celdasJugadorDestino = filaDestino.querySelectorAll('.col-jugador');
+
+              celdasJugadorOrigen.forEach((celdaOrigen, i) => {
+                  if (celdasJugadorDestino[i]) {
+                      celdasJugadorDestino[i].textContent = celdaOrigen.textContent;
+                  }
+              });
+          });
+
+          // La Tabla 2 queda vacía y lista para un nuevo llenado.
+          vaciarJugadoresDeTabla(numOrigen);
+
+          // Persistir el resultado de ambas tablas.
+          guardarTablaEnStorage(numDestino);
+          guardarTablaEnStorage(numOrigen);
+
+          // El botón se deshabilita de nuevo hasta que la Tabla 1 vuelva a vaciarse.
+          localStorage.setItem('habilitarMoverJugadores_2', 'false');
+          actualizarEstadoBotonMover();
+
+          alert('Los jugadores se movieron correctamente hacia la Tabla 1. La Tabla 2 está lista para un nuevo llenado.');
+      });
+
       // Logout (GLOBAL: cierra sesión y bloquea ambas tablas)
       badgeUsuario.addEventListener('click', () => {
           if(confirm("¿Deseas cerrar la sesión actual? Se bloquearán las celdas de ambas tablas.")) {
@@ -1850,4 +2115,3 @@
 </body>
 
 </html>
-
