@@ -38,25 +38,66 @@
 
     body {
         font-family: 'Montserrat', sans-serif;
-        background-color: var(--gris-fondo);
+        background: linear-gradient(160deg, #eef1ef 0%, var(--gris-fondo) 50%, #eef2ee 100%);
         color: var(--oscuro);
         padding: 20px;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
         min-height: 100vh;
     }
 
-    .pantalla-contenedor {
+    /* ---- Barra global de administración (login / usuarios) ---- */
+    .barra-global-admin {
         width: 100%;
-        max-width: 1350px;
+        max-width: 1400px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+    }
+
+    .contenedor-doble {
+        width: 100%;
+        max-width: 1400px;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .pantalla-contenedor {
+        flex: 1 1 620px;
+        max-width: 690px;
         background-color: var(--blanco);
         border: 4px solid var(--verde-primario); 
         border-top: 12px solid var(--verde-primario);
         border-radius: 12px;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        box-shadow: 0 20px 45px rgba(17, 52, 38, 0.16), 0 4px 12px rgba(0,0,0,0.06);
         padding: 30px 25px;
         margin-bottom: 20px;
         position: relative;
+    }
+
+    .zona-superior-imagen {
+        position: relative;
+        background: linear-gradient(135deg, var(--dorado-claro) 0%, #ffffff 55%, var(--dorado-claro) 100%);
+        border-radius: 8px 8px 0 0;
+        margin: -30px -25px 25px -25px;
+        padding: 20px 25px 0 25px;
+        overflow: hidden;
+    }
+
+    .zona-superior-imagen::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, var(--dorado), transparent);
     }
 
     .barra-reloj {
@@ -65,7 +106,7 @@
     }
     
     .reloj-digital {
-        background-color: var(--verde-primario);
+        background: linear-gradient(135deg, var(--verde-primario) 0%, var(--verde-hover) 100%);
         color: var(--dorado);
         border: 1px solid var(--dorado);
         padding: 6px 20px;
@@ -84,6 +125,8 @@
         border-bottom: 2px solid var(--dorado-claro);
         padding-bottom: 25px;
         margin-bottom: 25px;
+        flex-wrap: wrap;
+        gap: 15px;
     }
 
     /* Espacio para el Logotipo */
@@ -94,8 +137,8 @@
     }
     
     .logo-club-img {
-        width: 120px;
-        height: 120px;
+        width: 90px;
+        height: 90px;
         object-fit: contain;
         filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.12));
         transition: transform 0.3s ease;
@@ -109,7 +152,7 @@
         flex: 2;
         text-align: center;
         font-family: 'Cinzel', serif;
-        font-size: 2rem;
+        font-size: 1.6rem;
         font-weight: 700;
         color: var(--verde-primario);
         text-transform: uppercase;
@@ -122,12 +165,12 @@
         display: flex;
         flex-direction: column;
         align-items: flex-end;
-        gap: 15px;
+        gap: 12px;
     }
     
     .texto-info h2 {
         font-family: 'Cinzel', serif;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         color: var(--verde-primario);
         font-weight: 800;
         line-height: 1.2;
@@ -135,7 +178,7 @@
     }
     
     .texto-info p {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         color: var(--dorado);
         text-transform: uppercase;
         font-weight: 700;
@@ -151,7 +194,7 @@
     }
 
     /* Botones con estilo elegante y corporativo */
-    .btn-login, .btn-guardar, .btn-usuarios {
+    .btn-login, .btn-guardar, .btn-usuarios, .btn-config-hora {
         background-color: var(--verde-primario);
         color: var(--blanco);
         border: 1px solid var(--dorado);
@@ -169,6 +212,7 @@
     .btn-login:hover { 
         background-color: var(--verde-hover);
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transform: translateY(-1px);
     }
     
     .btn-guardar { 
@@ -179,6 +223,18 @@
     .btn-guardar:hover { 
         background-color: #388e3c; 
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transform: translateY(-1px);
+    }
+
+    .btn-config-hora {
+        background-color: #1565c0;
+        border: 1px solid #0d47a1;
+        display: none;
+    }
+    .btn-config-hora:hover {
+        background-color: #1976d2;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transform: translateY(-1px);
     }
 
     .btn-usuarios { 
@@ -190,6 +246,7 @@
     .btn-usuarios:hover { 
         background-color: #a88849; 
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transform: translateY(-1px);
     }
 
     .usuario-logeado {
@@ -210,7 +267,7 @@
     }
 
     /* Modales */
-    .modal-login, .modal-usuarios {
+    .modal-login, .modal-usuarios, .modal-hora {
         display: none; 
         position: fixed;
         top: 0; left: 0;
@@ -280,7 +337,7 @@
         border-color: var(--verde-primario);
     }
     
-    .btn-enviar-login, .btn-crear-user {
+    .btn-enviar-login, .btn-crear-user, .btn-aplicar-hora {
         width: 100%;
         background-color: var(--verde-primario);
         color: var(--blanco);
@@ -296,7 +353,7 @@
         transition: background-color 0.2s ease;
     }
     
-    .btn-enviar-login:hover {
+    .btn-enviar-login:hover, .btn-aplicar-hora:hover {
         background-color: var(--verde-hover);
     }
     
@@ -334,6 +391,13 @@
     
     .error-mensaje { color: #d32f2f; }
     .exito-mensaje { color: #2e7d32; }
+
+    .nota-modal-hora {
+        font-size: 0.78rem;
+        color: #555;
+        margin-bottom: 15px;
+        line-height: 1.4;
+    }
 
     /* Sección de administración de usuarios registrados (solo Admin) */
     .separador-usuarios {
@@ -461,35 +525,42 @@
     /* Estilos Elegantes de la Tabla */
     .tabla-salidas {
         width: 100%;
+        table-layout: fixed;
         border-collapse: collapse;
-        font-size: 0.88rem;
+        font-size: 0.82rem;
         box-shadow: 0 4px 10px rgba(0,0,0,0.02);
     }
 
     .tabla-salidas th {
-        background-color: var(--verde-primario);
+        background: linear-gradient(180deg, var(--verde-primario) 0%, #0d2a1e 100%);
         color: var(--blanco);
         font-family: 'Montserrat', sans-serif;
         font-weight: 700;
         text-transform: uppercase;
-        padding: 14px 10px;
+        padding: 12px 8px;
         border-bottom: 3px solid var(--dorado);
-        font-size: 0.78rem;
+        font-size: 0.72rem;
         letter-spacing: 1px;
     }
 
     .tabla-salidas td {
-        padding: 12px 10px;
+        padding: 10px 8px;
         border-bottom: 1px solid var(--borde);
         color: #333333;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
         transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .tabla-salidas th {
+        overflow-wrap: break-word;
     }
 
     .col-hoyo { 
         width: 5%; 
         text-align: center; 
         font-weight: 700; 
-        background-color: var(--dorado-claro) !important; 
+        background: linear-gradient(180deg, var(--dorado-claro) 0%, #ede4cd 100%) !important; 
         color: var(--verde-primario);
         border-right: 1px solid #e1d9c4;
     }
@@ -549,6 +620,13 @@
     /* ==========================================================================
        MEDIA QUERIES - OPTIMIZACIÓN COMPLETA PARA MÓVILES (TELÉFONOS Y TABLETS)
        ========================================================================== */
+
+    @media (max-width: 1400px) {
+        .pantalla-contenedor {
+            flex: 1 1 100%;
+            max-width: 900px;
+        }
+    }
     
     @media (max-width: 1024px) {
         body {
@@ -576,6 +654,10 @@
         .fecha-central {
             font-size: 1.6rem;
             order: -1; /* Mantiene la fecha arriba en pantallas medianas */
+        }
+
+        .barra-global-admin {
+            justify-content: center;
         }
     }
 
@@ -673,253 +755,538 @@
 
 <body>
 
-  <div class="pantalla-contenedor">
-    
-    <div class="barra-reloj">
-        <span class="reloj-digital" id="relojSuperior">--:-- --</span>
-    </div>
-
-    <header class="encabezado">
-        <div class="logo-club">
-            <img src="img/logo-club.png" 
-                 alt="Logo Oficial Club de Golf San Carlos" 
-                 class="logo-club-img">
-        </div>
-        
-        <h1 class="fecha-central" id="fechaCentral">Cargando fecha...</h1>
-        
-        <div class="bloque-derecho">
-            <div class="texto-info">
-                <h2>SALIDAS DE HOY</h2>
-                <p>Todays Tee Times</p>
-            </div>
-            <div class="admin-actions">
-                <button class="btn-usuarios" id="btnAbrirUsuarios">👥 Usuarios</button>
-                <button class="btn-guardar" id="btnGuardarCambios">💾 Guardar</button>
-                <button class="btn-login" id="btnAbrirLogin">Iniciar Sesión</button>
-                <span class="usuario-logeado" id="badgeUsuario" title="Click para Cerrar Sesión">🛠️ Admin: Kevin (Salir)</span>
-            </div>
-        </div>
-    </header>
-
-    <table class="tabla-salidas" id="tablaDatosGolf">
-        <thead>
-            <tr>
-                <th style="text-align: center;">Hoyo</th>
-                <th style="text-align: center;">Horario</th>
-                <th>Jugador 1</th>
-                <th>Jugador 2</th>
-                <th>Jugador 3</th>
-                <th>Jugador 4</th>
-                <th>Jugador 5</th>
-                <th style="text-align: center;">Campo</th>
-                <th style="text-align: center;">Detalles</th>
-            </tr>
-        </thead>
-        <tbody id="cuerpoTablaGolf">
-            <tr>
-                <td class="col-hoyo" data-label="Hoyo">1</td>
-                <td class="col-horario" data-label="Horario">07:00</td>
-                <td class="col-jugador" data-label="Jugador 1">M. García, L. Martínez</td>
-                <td class="col-jugador" data-label="Jugador 2">L. Silva, A. Fernández</td>
-                <td class="col-jugador" data-label="Jugador 3">María Camacho</td>
-                <td class="col-jugador" data-label="Jugador 4">Abelardo Rescate</td>
-                <td class="col-jugador" data-label="Jugador 5"></td>
-                <td class="col-campo" data-label="Campo">Norte</td>
-                <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-            </tr>
-            <tr>
-                <td class="col-hoyo" data-label="Hoyo">2</td>
-                <td class="col-horario" data-label="Horario">07:20</td>
-                <td class="col-jugador" data-label="Jugador 1">R. Pérez, S. López</td>
-                <td class="col-jugador" data-label="Jugador 2">E. Hernández</td>
-                <td class="col-jugador" data-label="Jugador 3"></td>
-                <td class="col-jugador" data-label="Jugador 4"></td>
-                <td class="col-jugador" data-label="Jugador 5"></td>
-                <td class="col-campo" data-label="Campo">Norte</td>
-                <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-            </tr>
-            <tr>
-                <td class="col-hoyo" data-label="Hoyo">3</td>
-                <td class="col-horario" data-label="Horario">07:40</td>
-                <td class="col-jugador" data-label="Jugador 1">Giovanni Rosas</td>
-                <td class="col-jugador" data-label="Jugador 2">Carlos Muñoz Jr.</td>
-                <td class="col-jugador" data-label="Jugador 3">Ivan Talavera</td>
-                <td class="col-jugador" data-label="Jugador 4">Roberto Herrera</td>
-                <td class="col-jugador" data-label="Jugador 5">Enrique Ballesteros</td>
-                <td class="col-campo" data-label="Campo">Norte</td>
-                <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-            </tr>
-            <tr>
-                <td class="col-hoyo" data-label="Hoyo">4</td>
-                <td class="col-horario" data-label="Horario">07:40</td>
-                <td class="col-jugador" data-label="Jugador 1">José A. Padruno</td>
-                <td class="col-jugador" data-label="Jugador 2">Miguel Fierro</td>
-                <td class="col-jugador" data-label="Jugador 3">Edgar Alvarado</td>
-                <td class="col-jugador" data-label="Jugador 4">Erick Meyer</td>
-                <td class="col-jugador" data-label="Jugador 5">Emmanuel Bill Ocaña</td>
-                <td class="col-campo" data-label="Campo">Norte</td>
-                <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-            </tr>
-            <tr>
-                <td class="col-hoyo" data-label="Hoyo">5</td>
-                <td class="col-horario" data-label="Horario">07:50</td>
-                <td class="col-jugador" data-label="Jugador 1">Carlos Zamorita</td>
-                <td class="col-jugador" data-label="Jugador 2">Fernando Gonzales</td>
-                <td class="col-jugador" data-label="Jugador 3">Julián Pulido</td>
-                <td class="col-jugador" data-label="Jugador 4">José A. Villanueva</td>
-                <td class="col-jugador" data-label="Jugador 5"></td>
-                <td class="col-campo" data-label="Campo">Norte</td>
-                <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-            </tr>
-            <tr>
-                <td class="col-hoyo" data-label="Hoyo">6</td>
-                <td class="col-horario" data-label="Horario">08:00</td>
-                <td class="col-jugador" data-label="Jugador 1">Jorge Mandrigal</td>
-                <td class="col-jugador" data-label="Jugador 2">José A. Ramírez</td>
-                <td class="col-jugador" data-label="Jugador 3">Blanca Zetina</td>
-                <td class="col-jugador" data-label="Jugador 4">Armando Ayala</td>
-                <td class="col-jugador" data-label="Jugador 5">Cristian Morales</td>
-                <td class="col-campo" data-label="Campo">Norte</td>
-                <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-            </tr>
-            <tr>
-                <td class="col-hoyo" data-label="Hoyo">7</td>
-                <td class="col-horario" data-label="Horario">08:00</td>
-                <td class="col-jugador" data-label="Jugador 1">Mariana Jimenes</td>
-                <td class="col-jugador" data-label="Jugador 2">Pablo Jimenes</td>
-                <td class="col-jugador" data-label="Jugador 3">Jose Pablo Villanueva</td>
-                <td class="col-jugador" data-label="Jugador 4">Carlos Villanueva</td>
-                <td class="col-jugador" data-label="Jugador 5"></td>
-                <td class="col-campo" data-label="Campo">Sur</td>
-                <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-            </tr>
-            <tr>
-                <td class="col-hoyo" data-label="Hoyo">8</td>
-                <td class="col-horario" data-label="Horario">08:10</td>
-                <td class="col-jugador" data-label="Jugador 1">Victoria Motte</td>
-                <td class="col-jugador" data-label="Jugador 2">Ximena Rosas</td>
-                <td class="col-jugador" data-label="Jugador 3"></td>
-                <td class="col-jugador" data-label="Jugador 4"></td>
-                <td class="col-jugador" data-label="Jugador 5"></td>
-                <td class="col-campo" data-label="Campo">Norte</td>
-                <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-            </tr>
-            <tr>
-                <td class="col-hoyo" data-label="Hoyo">9</td>
-                <td class="col-horario" data-label="Horario">12:20</td>
-                <td class="col-jugador" data-label="Jugador 1">Rierezz Abbert</td>
-                <td class="col-jugador" data-label="Jugador 2">B depofenet</td>
-                <td class="col-jugador" data-label="Jugador 3"></td>
-                <td class="col-jugador" data-label="Jugador 4"></td>
-                <td class="col-jugador" data-label="Jugador 5"></td>
-                <td class="col-campo" data-label="Campo">Norte</td>
-                <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-            </tr>
-            <tr>
-                <td class="col-hoyo" data-label="Hoyo">10</td>
-                <td class="col-horario" data-label="Horario">12:20</td>
-                <td class="col-jugador" data-label="Jugador 1"></td>
-                <td class="col-jugador" data-label="Jugador 2"></td>
-                <td class="col-jugador" data-label="Jugador 3"></td>
-                <td class="col-jugador" data-label="Jugador 4"></td>
-                <td class="col-jugador" data-label="Jugador 5"></td>
-                <td class="col-campo" data-label="Campo">Norte</td>
-                <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-            </tr>
-            <tr>
-                <td class="col-hoyo" data-label="Hoyo">11</td>
-                <td class="col-horario" data-label="Horario">12:20</td>
-                <td class="col-jugador" data-label="Jugador 1">(T. Marguaz, J. Pulle</td>
-                <td class="col-jugador" data-label="Jugador 2">U Horrera)</td>
-                <td class="col-jugador" data-label="Jugador 3">Carlos Muños Jr.</td>
-                <td class="col-jugador" data-label="Jugador 4"></td>
-                <td class="col-jugador" data-label="Jugador 5"></td>
-                <td class="col-campo" data-label="Campo">Norte</td>
-                <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-            </tr>
-            <tr>
-                <td class="col-hoyo" data-label="Hoyo">12</td>
-                <td class="col-horario" data-label="Horario">12:20</td>
-                <td class="col-jugador" data-label="Jugador 1">José A. Padruno</td>
-                <td class="col-jugador" data-label="Jugador 2">Miguel Fierro</td>
-                <td class="col-jugador" data-label="Jugador 3">Julián Pulido</td>
-                <td class="col-jugador" data-label="Jugador 4"></td>
-                <td class="col-jugador" data-label="Jugador 5"></td>
-                <td class="col-campo" data-label="Campo">Norte</td>
-                <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-            </tr>
-            <tr>
-                <td class="col-hoyo" data-label="Hoyo">13</td>
-                <td class="col-horario" data-label="Horario">12:20</td>
-                <td class="col-jugador" data-label="Jugador 1">Mariana Jimenes</td>
-                <td class="col-jugador" data-label="Jugador 2">José A. Gomrales</td>
-                <td class="col-jugador" data-label="Jugador 3"></td>
-                <td class="col-jugador" data-label="Jugador 4"></td>
-                <td class="col-jugador" data-label="Jugador 5"></td>
-                <td class="col-campo" data-label="Campo">Norte</td>
-                <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-            </tr>
-            <tr>
-                <td class="col-hoyo" data-label="Hoyo">14</td>
-                <td class="col-horario" data-label="Horario">08:10</td>
-                <td class="col-jugador" data-label="Jugador 1">Victoria Motte</td>
-                <td class="col-jugador" data-label="Jugador 2">Carlos Villanueva</td>
-                <td class="col-jugador" data-label="Jugador 3">Blanca Zetina</td>
-                <td class="col-jugador" data-label="Jugador 4"></td>
-                <td class="col-jugador" data-label="Jugador 5"></td>
-                <td class="col-campo" data-label="Campo">Norte</td>
-                <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-            </tr>
-            <tr>
-                <td class="col-hoyo" data-label="Hoyo">15</td>
-                <td class="col-horario" data-label="Horario">08:20</td>
-                <td class="col-jugador" data-label="Jugador 1"></td>
-                <td class="col-jugador" data-label="Jugador 2"></td>
-                <td class="col-jugador" data-label="Jugador 3"></td>
-                <td class="col-jugador" data-label="Jugador 4"></td>
-                <td class="col-jugador" data-label="Jugador 5"></td>
-                <td class="col-campo" data-label="Campo">Norte</td>
-                <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-            </tr>
-            <tr>
-                <td class="col-hoyo" data-label="Hoyo">16</td>
-                <td class="col-horario" data-label="Horario">08:30</td>
-                <td class="col-jugador" data-label="Jugador 1"></td>
-                <td class="col-jugador" data-label="Jugador 2"></td>
-                <td class="col-jugador" data-label="Jugador 3"></td>
-                <td class="col-jugador" data-label="Jugador 4"></td>
-                <td class="col-jugador" data-label="Jugador 5"></td>
-                <td class="col-campo" data-label="Campo">Norte</td>
-                <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-            </tr>
-            <tr>
-                <td class="col-hoyo" data-label="Hoyo">17</td>
-                <td class="col-horario" data-label="Horario">08:50</td>
-                <td class="col-jugador" data-label="Jugador 1"></td>
-                <td class="col-jugador" data-label="Jugador 2"></td>
-                <td class="col-jugador" data-label="Jugador 3"></td>
-                <td class="col-jugador" data-label="Jugador 4"></td>
-                <td class="col-jugador" data-label="Jugador 5"></td>
-                <td class="col-campo" data-label="Campo">Norte</td>
-                <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-            </tr>
-            <tr>
-                <td class="col-hoyo" data-label="Hoyo">18</td>
-                <td class="col-horario" data-label="Horario">09:00</td>
-                <td class="col-jugador" data-label="Jugador 1"></td>
-                <td class="col-jugador" data-label="Jugador 2"></td>
-                <td class="col-jugador" data-label="Jugador 3"></td>
-                <td class="col-jugador" data-label="Jugador 4"></td>
-                <td class="col-jugador" data-label="Jugador 5"></td>
-                <td class="col-campo" data-label="Campo">Norte</td>
-                <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-            </tr>
-        </tbody>
-    </table>
+  <!-- ============ BARRA GLOBAL: LOGIN / USUARIOS (compartida por ambas tablas) ============ -->
+  <div class="barra-global-admin">
+      <button class="btn-usuarios" id="btnAbrirUsuarios">👥 Usuarios</button>
+      <button class="btn-login" id="btnAbrirLogin">Iniciar Sesión</button>
+      <span class="usuario-logeado" id="badgeUsuario" title="Click para Cerrar Sesión">🛠️ Admin: Kevin (Salir)</span>
   </div>
 
-  <!-- Modal Login -->
+  <div class="contenedor-doble">
+
+    <!-- ============================================================ -->
+    <!-- ======================  TABLA 1 (independiente)  ============ -->
+    <!-- ============================================================ -->
+    <div class="pantalla-contenedor" data-tabla="1">
+
+        <div class="zona-superior-imagen">
+            <div class="barra-reloj">
+                <span class="reloj-digital" id="relojSuperior1">--:-- --</span>
+            </div>
+
+            <header class="encabezado">
+                <div class="logo-club">
+                    <img src="img/Logo.png" 
+                         alt="Logo Oficial Club de Golf San Carlos" 
+                         class="logo-club-img">
+                </div>
+                
+                <h1 class="fecha-central" id="fechaCentral1">Cargando fecha...</h1>
+                
+                <div class="bloque-derecho">
+                    <div class="texto-info">
+                        <h2>SALIDAS DE HOY</h2>
+                        <p>Today's Tee Times</p>
+                    </div>
+                    <div class="admin-actions">
+                        <button class="btn-config-hora" data-tabla="1" id="btnConfigHora1">🕒 Config. Fecha/Hora</button>
+                        <button class="btn-guardar" data-tabla="1" id="btnGuardarCambios1">💾 Guardar</button>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <table class="tabla-salidas" id="tablaDatosGolf1">
+            <colgroup>
+                <col style="width: 5%;">
+                <col style="width: 7%;">
+                <col style="width: 14%;">
+                <col style="width: 14%;">
+                <col style="width: 14%;">
+                <col style="width: 14%;">
+                <col style="width: 14%;">
+                <col style="width: 8%;">
+                <col style="width: 10%;">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Hoyo</th>
+                    <th style="text-align: center;">Horario</th>
+                    <th>Jugador 1</th>
+                    <th>Jugador 2</th>
+                    <th>Jugador 3</th>
+                    <th>Jugador 4</th>
+                    <th>Jugador 5</th>
+                    <th style="text-align: center;">Campo</th>
+                    <th style="text-align: center;">Detalles</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoTablaGolf1">
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">1</td>
+                    <td class="col-horario" data-label="Horario">07:00</td>
+                    <td class="col-jugador" data-label="Jugador 1">M. García, L. Martínez</td>
+                    <td class="col-jugador" data-label="Jugador 2">L. Silva, A. Fernández</td>
+                    <td class="col-jugador" data-label="Jugador 3">María Camacho</td>
+                    <td class="col-jugador" data-label="Jugador 4">Abelardo Rescate</td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">2</td>
+                    <td class="col-horario" data-label="Horario">07:20</td>
+                    <td class="col-jugador" data-label="Jugador 1">R. Pérez, S. López</td>
+                    <td class="col-jugador" data-label="Jugador 2">E. Hernández</td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">3</td>
+                    <td class="col-horario" data-label="Horario">07:40</td>
+                    <td class="col-jugador" data-label="Jugador 1">Giovanni Rosas</td>
+                    <td class="col-jugador" data-label="Jugador 2">Carlos Muñoz Jr.</td>
+                    <td class="col-jugador" data-label="Jugador 3">Ivan Talavera</td>
+                    <td class="col-jugador" data-label="Jugador 4">Roberto Herrera</td>
+                    <td class="col-jugador" data-label="Jugador 5">Enrique Ballesteros</td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">4</td>
+                    <td class="col-horario" data-label="Horario">07:40</td>
+                    <td class="col-jugador" data-label="Jugador 1">José A. Padruno</td>
+                    <td class="col-jugador" data-label="Jugador 2">Miguel Fierro</td>
+                    <td class="col-jugador" data-label="Jugador 3">Edgar Alvarado</td>
+                    <td class="col-jugador" data-label="Jugador 4">Erick Meyer</td>
+                    <td class="col-jugador" data-label="Jugador 5">Emmanuel Bill Ocaña</td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">5</td>
+                    <td class="col-horario" data-label="Horario">07:50</td>
+                    <td class="col-jugador" data-label="Jugador 1">Carlos Zamorita</td>
+                    <td class="col-jugador" data-label="Jugador 2">Fernando Gonzales</td>
+                    <td class="col-jugador" data-label="Jugador 3">Julián Pulido</td>
+                    <td class="col-jugador" data-label="Jugador 4">José A. Villanueva</td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">6</td>
+                    <td class="col-horario" data-label="Horario">08:00</td>
+                    <td class="col-jugador" data-label="Jugador 1">Jorge Mandrigal</td>
+                    <td class="col-jugador" data-label="Jugador 2">José A. Ramírez</td>
+                    <td class="col-jugador" data-label="Jugador 3">Blanca Zetina</td>
+                    <td class="col-jugador" data-label="Jugador 4">Armando Ayala</td>
+                    <td class="col-jugador" data-label="Jugador 5">Cristian Morales</td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">7</td>
+                    <td class="col-horario" data-label="Horario">08:00</td>
+                    <td class="col-jugador" data-label="Jugador 1">Mariana Jimenes</td>
+                    <td class="col-jugador" data-label="Jugador 2">Pablo Jimenes</td>
+                    <td class="col-jugador" data-label="Jugador 3">Jose Pablo Villanueva</td>
+                    <td class="col-jugador" data-label="Jugador 4">Carlos Villanueva</td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Sur</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">8</td>
+                    <td class="col-horario" data-label="Horario">08:10</td>
+                    <td class="col-jugador" data-label="Jugador 1">Victoria Motte</td>
+                    <td class="col-jugador" data-label="Jugador 2">Ximena Rosas</td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">9</td>
+                    <td class="col-horario" data-label="Horario">12:20</td>
+                    <td class="col-jugador" data-label="Jugador 1">Rierezz Abbert</td>
+                    <td class="col-jugador" data-label="Jugador 2">B depofenet</td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">10</td>
+                    <td class="col-horario" data-label="Horario">12:20</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">11</td>
+                    <td class="col-horario" data-label="Horario">12:20</td>
+                    <td class="col-jugador" data-label="Jugador 1">(T. Marguaz, J. Pulle</td>
+                    <td class="col-jugador" data-label="Jugador 2">U Horrera)</td>
+                    <td class="col-jugador" data-label="Jugador 3">Carlos Muños Jr.</td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">12</td>
+                    <td class="col-horario" data-label="Horario">12:20</td>
+                    <td class="col-jugador" data-label="Jugador 1">José A. Padruno</td>
+                    <td class="col-jugador" data-label="Jugador 2">Miguel Fierro</td>
+                    <td class="col-jugador" data-label="Jugador 3">Julián Pulido</td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">13</td>
+                    <td class="col-horario" data-label="Horario">12:20</td>
+                    <td class="col-jugador" data-label="Jugador 1">Mariana Jimenes</td>
+                    <td class="col-jugador" data-label="Jugador 2">José A. Gomrales</td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">14</td>
+                    <td class="col-horario" data-label="Horario">08:10</td>
+                    <td class="col-jugador" data-label="Jugador 1">Victoria Motte</td>
+                    <td class="col-jugador" data-label="Jugador 2">Carlos Villanueva</td>
+                    <td class="col-jugador" data-label="Jugador 3">Blanca Zetina</td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">15</td>
+                    <td class="col-horario" data-label="Horario">08:20</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">16</td>
+                    <td class="col-horario" data-label="Horario">08:30</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">17</td>
+                    <td class="col-horario" data-label="Horario">08:50</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">18</td>
+                    <td class="col-horario" data-label="Horario">09:00</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ======================  TABLA 2 (independiente)  ============ -->
+    <!-- ============================================================ -->
+    <div class="pantalla-contenedor" data-tabla="2">
+
+        <div class="zona-superior-imagen">
+            <div class="barra-reloj">
+                <span class="reloj-digital" id="relojSuperior2">--:-- --</span>
+            </div>
+
+            <header class="encabezado">
+                <div class="logo-club">
+                    <img src="img/Logo.png" 
+                         alt="Logo Oficial Club de Golf San Carlos" 
+                         class="logo-club-img">
+                </div>
+                
+                <h1 class="fecha-central" id="fechaCentral2">Cargando fecha...</h1>
+                
+                <div class="bloque-derecho">
+                    <div class="texto-info">
+                        <h2>SALIDAS DE HOY</h2>
+                        <p>Today's Tee Times</p>
+                    </div>
+                    <div class="admin-actions">
+                        <button class="btn-config-hora" data-tabla="2" id="btnConfigHora2">🕒 Config. Fecha/Hora</button>
+                        <button class="btn-guardar" data-tabla="2" id="btnGuardarCambios2">💾 Guardar</button>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <table class="tabla-salidas" id="tablaDatosGolf2">
+            <colgroup>
+                <col style="width: 5%;">
+                <col style="width: 7%;">
+                <col style="width: 14%;">
+                <col style="width: 14%;">
+                <col style="width: 14%;">
+                <col style="width: 14%;">
+                <col style="width: 14%;">
+                <col style="width: 8%;">
+                <col style="width: 10%;">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Hoyo</th>
+                    <th style="text-align: center;">Horario</th>
+                    <th>Jugador 1</th>
+                    <th>Jugador 2</th>
+                    <th>Jugador 3</th>
+                    <th>Jugador 4</th>
+                    <th>Jugador 5</th>
+                    <th style="text-align: center;">Campo</th>
+                    <th style="text-align: center;">Detalles</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoTablaGolf2">
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">1</td>
+                    <td class="col-horario" data-label="Horario">07:00</td>
+                    <td class="col-jugador" data-label="Jugador 1">M. García, L. Martínez</td>
+                    <td class="col-jugador" data-label="Jugador 2">L. Silva, A. Fernández</td>
+                    <td class="col-jugador" data-label="Jugador 3">María Camacho</td>
+                    <td class="col-jugador" data-label="Jugador 4">Abelardo Rescate</td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">2</td>
+                    <td class="col-horario" data-label="Horario">07:20</td>
+                    <td class="col-jugador" data-label="Jugador 1">R. Pérez, S. López</td>
+                    <td class="col-jugador" data-label="Jugador 2">E. Hernández</td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">3</td>
+                    <td class="col-horario" data-label="Horario">07:40</td>
+                    <td class="col-jugador" data-label="Jugador 1">Giovanni Rosas</td>
+                    <td class="col-jugador" data-label="Jugador 2">Carlos Muñoz Jr.</td>
+                    <td class="col-jugador" data-label="Jugador 3">Ivan Talavera</td>
+                    <td class="col-jugador" data-label="Jugador 4">Roberto Herrera</td>
+                    <td class="col-jugador" data-label="Jugador 5">Enrique Ballesteros</td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">4</td>
+                    <td class="col-horario" data-label="Horario">07:40</td>
+                    <td class="col-jugador" data-label="Jugador 1">José A. Padruno</td>
+                    <td class="col-jugador" data-label="Jugador 2">Miguel Fierro</td>
+                    <td class="col-jugador" data-label="Jugador 3">Edgar Alvarado</td>
+                    <td class="col-jugador" data-label="Jugador 4">Erick Meyer</td>
+                    <td class="col-jugador" data-label="Jugador 5">Emmanuel Bill Ocaña</td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">5</td>
+                    <td class="col-horario" data-label="Horario">07:50</td>
+                    <td class="col-jugador" data-label="Jugador 1">Carlos Zamorita</td>
+                    <td class="col-jugador" data-label="Jugador 2">Fernando Gonzales</td>
+                    <td class="col-jugador" data-label="Jugador 3">Julián Pulido</td>
+                    <td class="col-jugador" data-label="Jugador 4">José A. Villanueva</td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">6</td>
+                    <td class="col-horario" data-label="Horario">08:00</td>
+                    <td class="col-jugador" data-label="Jugador 1">Jorge Mandrigal</td>
+                    <td class="col-jugador" data-label="Jugador 2">José A. Ramírez</td>
+                    <td class="col-jugador" data-label="Jugador 3">Blanca Zetina</td>
+                    <td class="col-jugador" data-label="Jugador 4">Armando Ayala</td>
+                    <td class="col-jugador" data-label="Jugador 5">Cristian Morales</td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">7</td>
+                    <td class="col-horario" data-label="Horario">08:00</td>
+                    <td class="col-jugador" data-label="Jugador 1">Mariana Jimenes</td>
+                    <td class="col-jugador" data-label="Jugador 2">Pablo Jimenes</td>
+                    <td class="col-jugador" data-label="Jugador 3">Jose Pablo Villanueva</td>
+                    <td class="col-jugador" data-label="Jugador 4">Carlos Villanueva</td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Sur</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">8</td>
+                    <td class="col-horario" data-label="Horario">08:10</td>
+                    <td class="col-jugador" data-label="Jugador 1">Victoria Motte</td>
+                    <td class="col-jugador" data-label="Jugador 2">Ximena Rosas</td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">9</td>
+                    <td class="col-horario" data-label="Horario">12:20</td>
+                    <td class="col-jugador" data-label="Jugador 1">Rierezz Abbert</td>
+                    <td class="col-jugador" data-label="Jugador 2">B depofenet</td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">10</td>
+                    <td class="col-horario" data-label="Horario">12:20</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">11</td>
+                    <td class="col-horario" data-label="Horario">12:20</td>
+                    <td class="col-jugador" data-label="Jugador 1">(T. Marguaz, J. Pulle</td>
+                    <td class="col-jugador" data-label="Jugador 2">U Horrera)</td>
+                    <td class="col-jugador" data-label="Jugador 3">Carlos Muños Jr.</td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">12</td>
+                    <td class="col-horario" data-label="Horario">12:20</td>
+                    <td class="col-jugador" data-label="Jugador 1">José A. Padruno</td>
+                    <td class="col-jugador" data-label="Jugador 2">Miguel Fierro</td>
+                    <td class="col-jugador" data-label="Jugador 3">Julián Pulido</td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">13</td>
+                    <td class="col-horario" data-label="Horario">12:20</td>
+                    <td class="col-jugador" data-label="Jugador 1">Mariana Jimenes</td>
+                    <td class="col-jugador" data-label="Jugador 2">José A. Gomrales</td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">14</td>
+                    <td class="col-horario" data-label="Horario">08:10</td>
+                    <td class="col-jugador" data-label="Jugador 1">Victoria Motte</td>
+                    <td class="col-jugador" data-label="Jugador 2">Carlos Villanueva</td>
+                    <td class="col-jugador" data-label="Jugador 3">Blanca Zetina</td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">15</td>
+                    <td class="col-horario" data-label="Horario">08:20</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">16</td>
+                    <td class="col-horario" data-label="Horario">08:30</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">17</td>
+                    <td class="col-horario" data-label="Horario">08:50</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">18</td>
+                    <td class="col-horario" data-label="Horario">09:00</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+  </div>
+
+  <!-- Modal Login (GLOBAL - una sola sesión aplica a ambas tablas) -->
   <div class="modal-login" id="modalLogin">
       <div class="modal-contenido">
           <button class="btn-cerrar-modal" id="btnCerrarLogin">&times;</button>
@@ -939,7 +1306,7 @@
       </div>
   </div>
 
-  <!-- Modal Registro y Administración de Usuarios (solo Administradores) -->
+  <!-- Modal Registro y Administración de Usuarios (GLOBAL - solo Administradores, aplica a ambas tablas) -->
   <div class="modal-usuarios" id="modalUsuarios">
       <div class="modal-contenido modal-contenido-usuarios">
           <button class="btn-cerrar-modal" id="btnCerrarUsuarios">&times;</button>
@@ -967,30 +1334,77 @@
 
           <hr class="separador-usuarios">
 
-          <h4 class="titulo-lista-usuarios">Usuarios Registrados y Permisos</h4>
+          <h4 class="titulo-lista-usuarios">Usuarios Registrados y Permisos (Global - Ambas Tablas)</h4>
           <div id="listaUsuariosRegistrados"><!-- Se llena dinámicamente --></div>
       </div>
   </div>
 
+  <!-- Modal de Configuración Manual de Fecha/Hora (uno por tabla, independiente) -->
+  <div class="modal-hora" id="modalHora">
+      <div class="modal-contenido">
+          <button class="btn-cerrar-modal" id="btnCerrarHora">&times;</button>
+          <h3 id="tituloModalHora">Configurar Fecha y Hora</h3>
+          <p class="nota-modal-hora">Define manualmente la fecha y hora de esta tabla. A partir de este ajuste, el reloj y las columnas de "Detalles" seguirán funcionando de forma automática sin necesidad de volver a configurarlos.</p>
+          <form id="formularioHora">
+              <div class="grupo-input">
+                  <label for="inputFechaManual">Fecha</label>
+                  <input type="date" id="inputFechaManual" required>
+              </div>
+              <div class="grupo-input">
+                  <label for="inputHoraManual">Hora</label>
+                  <input type="time" id="inputHoraManual" required>
+              </div>
+              <button type="submit" class="btn-aplicar-hora">Aplicar y Sincronizar</button>
+          </form>
+      </div>
+  </div>
+
   <script>
-      // ---- ESTADOS DE USUARIOS Y PERSISTENCIA ----
+      // =========================================================================================
+      // ESTADO GLOBAL: LOGIN Y ADMINISTRACIÓN DE USUARIOS (compartido por ambas tablas)
+      // =========================================================================================
       const modalLogin = document.getElementById('modalLogin');
       const modalUsuarios = document.getElementById('modalUsuarios');
+      const modalHora = document.getElementById('modalHora');
       const btnAbrirLogin = document.getElementById('btnAbrirLogin');
       const btnAbrirUsuarios = document.getElementById('btnAbrirUsuarios');
       const btnCerrarLogin = document.getElementById('btnCerrarLogin');
       const btnCerrarUsuarios = document.getElementById('btnCerrarUsuarios');
-      const btnGuardar = document.getElementById('btnGuardarCambios');
+      const btnCerrarHora = document.getElementById('btnCerrarHora');
       const formLogin = document.getElementById('formularioLogin');
       const formRegistro = document.getElementById('formularioRegistro');
+      const formHora = document.getElementById('formularioHora');
       const badgeUsuario = document.getElementById('badgeUsuario');
       const contenedorListaUsuarios = document.getElementById('listaUsuariosRegistrados');
+
+      // Botones de Guardar y Config. Hora existen una vez POR TABLA (son independientes)
+      const botonesGuardar = document.querySelectorAll('.btn-guardar');
+      const botonesConfigHora = document.querySelectorAll('.btn-config-hora');
 
       let usuarioActual = null;
       let rolActual = null;
       let modoAdminActivo = false;
+      let tablaConfigurandoHora = null; // '1' o '2': cuál tabla está siendo configurada en el modal de hora
 
-      // Inicializar / migrar base de usuarios en LocalStorage
+      // Configuración de cada tabla independiente: su propio localStorage, su propio reloj/fecha, su propio offset de tiempo.
+      const configTablas = {
+          '1': {
+              idCuerpo: 'cuerpoTablaGolf1',
+              keyDatos: 'tablaGolfHTML_1',
+              keyOffset: 'offsetHoraManual_1',
+              idReloj: 'relojSuperior1',
+              idFecha: 'fechaCentral1'
+          },
+          '2': {
+              idCuerpo: 'cuerpoTablaGolf2',
+              keyDatos: 'tablaGolfHTML_2',
+              keyOffset: 'offsetHoraManual_2',
+              idReloj: 'relojSuperior2',
+              idFecha: 'fechaCentral2'
+          }
+      };
+
+      // Inicializar / migrar base de usuarios GLOBAL en LocalStorage (compartida por ambas tablas)
       // Estructura: { "nombreUsuario": { password: "...", rol: "admin" | "usuario" } }
       (function inicializarUsuarios() {
           let usuarios = JSON.parse(localStorage.getItem('usuariosBitacora') || 'null');
@@ -1017,24 +1431,28 @@
           }
       })();
 
-      // Cargar Datos de la Tabla guardados previamente
+      // Cargar Datos de CADA Tabla guardados previamente (independientes entre sí)
       window.addEventListener('DOMContentLoaded', () => {
-          const tablaGuardada = localStorage.getItem('tablaGolfHTML');
-          if (tablaGuardada) {
-              document.getElementById('cuerpoTablaGolf').innerHTML = tablaGuardada;
-          }
-          corregirFilasDeCompetenciaAntiguas();
-          inicializarColumnaHorario();
-          actualizarTiempoCompleto();
+          Object.keys(configTablas).forEach(numTabla => {
+              const cfg = configTablas[numTabla];
+              const tablaGuardada = localStorage.getItem(cfg.keyDatos);
+              if (tablaGuardada) {
+                  document.getElementById(cfg.idCuerpo).innerHTML = tablaGuardada;
+              }
+              corregirFilasDeCompetenciaAntiguas(numTabla);
+              inicializarColumnaHorario(numTabla);
+          });
+          actualizarTodasLasTablas();
       });
 
       // Corrige filas guardadas previamente en localStorage que todavía tengan el
       // antiguo bloque "CLUB COMPETITION" (con colspan) y las reconstruye como una
-      // fila normal con sus 5 espacios de jugador, igual que las demás.
-      function corregirFilasDeCompetenciaAntiguas() {
+      // fila normal con sus 5 espacios de jugador, igual que las demás. Se aplica por tabla.
+      function corregirFilasDeCompetenciaAntiguas(numTabla) {
+          const cfg = configTablas[numTabla];
           let seCorrigioAlgo = false;
 
-          document.querySelectorAll('#cuerpoTablaGolf tr').forEach(fila => {
+          document.querySelectorAll(`#${cfg.idCuerpo} tr`).forEach(fila => {
               const celdaConColspan = fila.querySelector('td[colspan]');
               const esFilaMarcada = fila.classList.contains('fila-competencia');
               const contieneTextoCompetencia = fila.textContent.toUpperCase().includes('CLUB COMPETITION');
@@ -1062,15 +1480,16 @@
           });
 
           if (seCorrigioAlgo) {
-              localStorage.setItem('tablaGolfHTML', document.getElementById('cuerpoTablaGolf').innerHTML);
+              localStorage.setItem(cfg.keyDatos, document.getElementById(cfg.idCuerpo).innerHTML);
           }
       }
 
+      // El modo de edición es GLOBAL: al iniciar sesión, se habilita la edición en AMBAS tablas a la vez.
       function alternarModoEdicion(activar) {
           modoAdminActivo = activar;
-          const todasLasCeldas = document.querySelectorAll('#tablaDatosGolf tbody td');
+          const todasLasCeldas = document.querySelectorAll('.tabla-salidas tbody td');
           todasLasCeldas.forEach(celda => {
-              if(celda.classList.contains('col-detalles') && activar) {
+              if (celda.classList.contains('col-detalles') && activar) {
                   celda.setAttribute('contenteditable', 'true');
               } else if (!celda.classList.contains('col-detalles')) {
                   celda.setAttribute('contenteditable', activar ? 'true' : 'false');
@@ -1078,9 +1497,14 @@
                   celda.setAttribute('contenteditable', 'false');
               }
           });
+
+          // Los botones de Guardar y Config. Hora son por tabla, pero se muestran/ocultan todos juntos
+          // porque la sesión (login) es global.
+          botonesGuardar.forEach(btn => { btn.style.display = activar ? 'inline-block' : 'none'; });
+          botonesConfigHora.forEach(btn => { btn.style.display = activar ? 'inline-block' : 'none'; });
       }
 
-      // Modales Triggers
+      // Modales Triggers (GLOBALES)
       btnAbrirLogin.addEventListener('click', () => { modalLogin.style.display = 'flex'; document.getElementById('msgError').style.display = 'none'; formLogin.reset(); });
       btnCerrarLogin.addEventListener('click', () => { modalLogin.style.display = 'none'; });
       
@@ -1094,7 +1518,7 @@
       });
       btnCerrarUsuarios.addEventListener('click', () => { modalUsuarios.style.display = 'none'; });
 
-      // Lógica de Login
+      // Lógica de Login (GLOBAL: una sola sesión habilita edición en ambas tablas)
       formLogin.addEventListener('submit', (e) => {
           e.preventDefault();
           const userIn = document.getElementById('txtUsuario').value.trim().toLowerCase();
@@ -1112,7 +1536,6 @@
               const etiquetaRol = rolActual === 'admin' ? 'Admin' : 'Operador';
               badgeUsuario.textContent = `🛠️ ${etiquetaRol}: ${userIn.toUpperCase()} (Salir)`;
               badgeUsuario.style.display = 'inline-block';
-              btnGuardar.style.display = 'inline-block';
 
               // Solo los usuarios con rol "admin" pueden ver/gestionar usuarios y sus permisos.
               // Los usuarios comunes no pueden agregar usuarios ni modificar permisos.
@@ -1124,7 +1547,7 @@
           }
       });
 
-      // Registro de Nuevos Usuarios (solo disponible para Administradores)
+      // Registro de Nuevos Usuarios (GLOBAL - solo disponible para Administradores, aplica a ambas tablas)
       formRegistro.addEventListener('submit', (e) => {
           e.preventDefault();
 
@@ -1153,7 +1576,7 @@
       });
 
       // Construye la tabla de usuarios registrados: rol, contraseña (visible/editable) y opción de eliminar.
-      // Todo esto solo lo puede ver y modificar un Administrador.
+      // Todo esto solo lo puede ver y modificar un Administrador, y aplica de forma GLOBAL a ambas tablas.
       function renderListaUsuarios() {
           if (rolActual !== 'admin') {
               contenedorListaUsuarios.innerHTML = '';
@@ -1247,10 +1670,9 @@
                   delete usuariosAct[nombreUsuario];
                   localStorage.setItem('usuariosBitacora', JSON.stringify(usuariosAct));
 
-                  // Si el usuario eliminado era la sesión activa, se cierra sesión de inmediato
+                  // Si el usuario eliminado era la sesión activa, se cierra sesión de inmediato (afecta ambas tablas)
                   if (nombreUsuario === usuarioActual) {
                       badgeUsuario.style.display = 'none';
-                      btnGuardar.style.display = 'none';
                       btnAbrirUsuarios.style.display = 'none';
                       btnAbrirLogin.style.display = 'inline-block';
                       modalUsuarios.style.display = 'none';
@@ -1264,32 +1686,96 @@
           });
       }
 
-      // Guardar tabla en LocalStorage
-      btnGuardar.addEventListener('click', () => {
-          alternarModoEdicion(false);
-          const htmlCuerpoTabla = document.getElementById('cuerpoTablaGolf').innerHTML;
-          localStorage.setItem('tablaGolfHTML', htmlCuerpoTabla);
-          alert("¡Estructura y datos de la bitácora almacenados localmente con éxito!");
-          alternarModoEdicion(true);
+      // Guardar cada tabla en su propio espacio de LocalStorage (independiente entre tablas)
+      botonesGuardar.forEach(btn => {
+          btn.addEventListener('click', () => {
+              const numTabla = btn.getAttribute('data-tabla');
+              const cfg = configTablas[numTabla];
+              alternarModoEdicion(false);
+              const htmlCuerpoTabla = document.getElementById(cfg.idCuerpo).innerHTML;
+              localStorage.setItem(cfg.keyDatos, htmlCuerpoTabla);
+              alert(`¡Estructura y datos de la Tabla ${numTabla} almacenados localmente con éxito!`);
+              alternarModoEdicion(true);
+          });
       });
 
-      // Logout
+      // Logout (GLOBAL: cierra sesión y bloquea ambas tablas)
       badgeUsuario.addEventListener('click', () => {
-          if(confirm("¿Deseas cerrar la sesión actual? Se bloquearán las celdas.")) {
+          if(confirm("¿Deseas cerrar la sesión actual? Se bloquearán las celdas de ambas tablas.")) {
               alternarModoEdicion(false);
               badgeUsuario.style.display = 'none';
-              btnGuardar.style.display = 'none';
               btnAbrirUsuarios.style.display = 'none';
               btnAbrirLogin.style.display = 'inline-block';
               usuarioActual = null;
               rolActual = null;
-              actualizarTiempoCompleto(); 
+              actualizarTodasLasTablas();
           }
       });
 
       window.addEventListener('click', (e) => { 
           if (e.target === modalLogin) modalLogin.style.display = 'none'; 
           if (e.target === modalUsuarios) modalUsuarios.style.display = 'none'; 
+          if (e.target === modalHora) modalHora.style.display = 'none';
+      });
+
+      // =========================================================================================
+      // CONFIGURACIÓN MANUAL DE FECHA/HORA POR TABLA (independiente para cada una)
+      // =========================================================================================
+      // Cada tabla guarda un "offset" en milisegundos: la diferencia entre la fecha/hora que el
+      // administrador definió manualmente y el momento real en que la definió. A partir de ahí,
+      // el reloj de esa tabla sigue avanzando solo (hora real + offset), sin requerir intervención
+      // nuevamente, incluso después de recargar la página.
+      function obtenerOffsetTabla(numTabla) {
+          const cfg = configTablas[numTabla];
+          const valor = localStorage.getItem(cfg.keyOffset);
+          return valor ? parseInt(valor, 10) : 0;
+      }
+
+      function obtenerFechaVirtualTabla(numTabla) {
+          return new Date(Date.now() + obtenerOffsetTabla(numTabla));
+      }
+
+      botonesConfigHora.forEach(btn => {
+          btn.addEventListener('click', () => {
+              tablaConfigurandoHora = btn.getAttribute('data-tabla');
+              document.getElementById('tituloModalHora').textContent = `Configurar Fecha y Hora - Tabla ${tablaConfigurandoHora}`;
+
+              const fechaVirtual = obtenerFechaVirtualTabla(tablaConfigurandoHora);
+              const yyyy = fechaVirtual.getFullYear();
+              const mm = String(fechaVirtual.getMonth() + 1).padStart(2, '0');
+              const dd = String(fechaVirtual.getDate()).padStart(2, '0');
+              const hh = String(fechaVirtual.getHours()).padStart(2, '0');
+              const min = String(fechaVirtual.getMinutes()).padStart(2, '0');
+
+              document.getElementById('inputFechaManual').value = `${yyyy}-${mm}-${dd}`;
+              document.getElementById('inputHoraManual').value = `${hh}:${min}`;
+
+              modalHora.style.display = 'flex';
+          });
+      });
+
+      btnCerrarHora.addEventListener('click', () => { modalHora.style.display = 'none'; });
+
+      formHora.addEventListener('submit', (e) => {
+          e.preventDefault();
+          if (!tablaConfigurandoHora) return;
+
+          const valorFecha = document.getElementById('inputFechaManual').value; // YYYY-MM-DD
+          const valorHora = document.getElementById('inputHoraManual').value;   // HH:MM
+
+          const fechaElegida = new Date(`${valorFecha}T${valorHora}:00`);
+          if (isNaN(fechaElegida.getTime())) {
+              alert('Fecha u hora inválida.');
+              return;
+          }
+
+          const cfg = configTablas[tablaConfigurandoHora];
+          const offset = fechaElegida.getTime() - Date.now();
+          localStorage.setItem(cfg.keyOffset, String(offset));
+
+          modalHora.style.display = 'none';
+          actualizarTablaTiempo(tablaConfigurandoHora);
+          tablaConfigurandoHora = null;
       });
 
       // ---- FORMATO DE HORAS: 24 HORAS + AM/PM AUTOMÁTICO ----
@@ -1308,9 +1794,10 @@
           return `${horasFormateadas}:${minutos} ${ampm}`;
       }
 
-      // Da formato inicial a la columna "Horario" (07:00 -> 07:00 AM, 14:30 -> 14:30 PM, etc.)
-      function inicializarColumnaHorario() {
-          document.querySelectorAll('#tablaDatosGolf .col-horario').forEach(celda => {
+      // Da formato inicial a la columna "Horario" de una tabla específica (07:00 -> 07:00 AM, etc.)
+      function inicializarColumnaHorario(numTabla) {
+          const cfg = configTablas[numTabla];
+          document.querySelectorAll(`#${cfg.idCuerpo} .col-horario`).forEach(celda => {
               celda.textContent = formatearHora24ConAMPM(celda.textContent);
 
               // Al terminar de editar la celda, se vuelve a formatear automáticamente
@@ -1320,7 +1807,7 @@
           });
       }
 
-      // Devuelve la hora actual en formato de 24 horas + AM/PM automático (ej. 14:35 PM)
+      // Devuelve la hora en formato de 24 horas + AM/PM automático (ej. 14:35 PM) para una fecha dada
       function obtenerHoraActual24ConAMPM(fecha) {
           const horas = fecha.getHours();
           const minutos = String(fecha.getMinutes()).padStart(2, '0');
@@ -1329,27 +1816,32 @@
           return `${horasFormateadas}:${minutos} ${ampm}`;
       }
 
-      // ---- RELOJ Y TIEMPO REAL ----
-      function actualizarTiempoCompleto() {
-          const ahora = new Date();
-          const stringHora = obtenerHoraActual24ConAMPM(ahora);
+      // ---- RELOJ Y TIEMPO REAL, POR TABLA (independiente, respetando su propio offset manual) ----
+      function actualizarTablaTiempo(numTabla) {
+          const cfg = configTablas[numTabla];
+          const fechaVirtual = obtenerFechaVirtualTabla(numTabla);
+          const stringHora = obtenerHoraActual24ConAMPM(fechaVirtual);
 
-          document.getElementById('relojSuperior').textContent = stringHora;
+          document.getElementById(cfg.idReloj).textContent = stringHora;
 
           if (!modoAdminActivo) {
-              document.querySelectorAll('.celda-tiempo-real').forEach(celda => {
+              document.querySelectorAll(`#${cfg.idCuerpo} .celda-tiempo-real`).forEach(celda => {
                   celda.textContent = stringHora;
               });
           }
 
           const opcionesFecha = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
-          let stringFecha = ahora.toLocaleDateString('es-ES', opcionesFecha);
+          let stringFecha = fechaVirtual.toLocaleDateString('es-ES', opcionesFecha);
           stringFecha = stringFecha.charAt(0).toUpperCase() + stringFecha.slice(1).replace(',', '');
-          document.getElementById('fechaCentral').textContent = stringFecha;
+          document.getElementById(cfg.idFecha).textContent = stringFecha;
       }
 
-      actualizarTiempoCompleto();
-      setInterval(actualizarTiempoCompleto, 1000);
+      function actualizarTodasLasTablas() {
+          Object.keys(configTablas).forEach(numTabla => actualizarTablaTiempo(numTabla));
+      }
+
+      actualizarTodasLasTablas();
+      setInterval(actualizarTodasLasTablas, 1000);
   </script>
 
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
