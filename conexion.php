@@ -13,7 +13,7 @@ try {
     ]);
 } catch (PDOException $e) {
     http_response_code(500);
-    echo json_encode(["error" => "Error de conexión: " . $e->getMessage()]);
+    header('Content-Type: application/json');
+    echo json_encode(["status" => "error", "message" => "Error de conexión: " . $e->getMessage()]);
     exit;
 }
-?>
