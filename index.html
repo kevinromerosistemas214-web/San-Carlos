@@ -618,6 +618,9 @@
         text-align: center; 
         font-weight: 700; 
         color: var(--verde-primario);
+        white-space: normal;
+        word-break: keep-all;
+        overflow-wrap: normal;
     }
     
     .col-jugador { 
@@ -631,6 +634,7 @@
         font-weight: 600;
         text-transform: uppercase;
         font-size: 0.8rem;
+        white-space: nowrap;
     }
     
     .col-detalles { 
@@ -638,6 +642,7 @@
         text-align: center; 
         color: #555; 
         font-weight: 600;
+        white-space: nowrap;
     }
 
     /* Filas pares con tono crema ultra claro */
@@ -682,8 +687,9 @@
 
         body {
             width: 100vw;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
             padding: 1.4vh 1.6vw;
             display: flex;
             flex-direction: column;
@@ -997,7 +1003,7 @@
                 </tr>
                 <tr>
                     <td class="col-hoyo" data-label="Hoyo">2</td>
-                    <td class="col-horario" data-label="Horario">07:20</td>
+                    <td class="col-horario" data-label="Horario">07:10</td>
                     <td class="col-jugador" data-label="Jugador 1">R. Pérez, S. López</td>
                     <td class="col-jugador" data-label="Jugador 2">E. Hernández</td>
                     <td class="col-jugador" data-label="Jugador 3"></td>
@@ -1008,7 +1014,7 @@
                 </tr>
                 <tr>
                     <td class="col-hoyo" data-label="Hoyo">3</td>
-                    <td class="col-horario" data-label="Horario">07:40</td>
+                    <td class="col-horario" data-label="Horario">07:20</td>
                     <td class="col-jugador" data-label="Jugador 1">Giovanni Rosas</td>
                     <td class="col-jugador" data-label="Jugador 2">Carlos Muñoz Jr.</td>
                     <td class="col-jugador" data-label="Jugador 3">Ivan Talavera</td>
@@ -1019,7 +1025,7 @@
                 </tr>
                 <tr>
                     <td class="col-hoyo" data-label="Hoyo">4</td>
-                    <td class="col-horario" data-label="Horario">07:40</td>
+                    <td class="col-horario" data-label="Horario">07:30</td>
                     <td class="col-jugador" data-label="Jugador 1">José A. Padruno</td>
                     <td class="col-jugador" data-label="Jugador 2">Miguel Fierro</td>
                     <td class="col-jugador" data-label="Jugador 3">Edgar Alvarado</td>
@@ -1030,7 +1036,7 @@
                 </tr>
                 <tr>
                     <td class="col-hoyo" data-label="Hoyo">5</td>
-                    <td class="col-horario" data-label="Horario">07:50</td>
+                    <td class="col-horario" data-label="Horario">07:40</td>
                     <td class="col-jugador" data-label="Jugador 1">Carlos Zamorita</td>
                     <td class="col-jugador" data-label="Jugador 2">Fernando Gonzales</td>
                     <td class="col-jugador" data-label="Jugador 3">Julián Pulido</td>
@@ -1041,7 +1047,7 @@
                 </tr>
                 <tr>
                     <td class="col-hoyo" data-label="Hoyo">6</td>
-                    <td class="col-horario" data-label="Horario">08:00</td>
+                    <td class="col-horario" data-label="Horario">07:50</td>
                     <td class="col-jugador" data-label="Jugador 1">Jorge Mandrigal</td>
                     <td class="col-jugador" data-label="Jugador 2">José A. Ramírez</td>
                     <td class="col-jugador" data-label="Jugador 3">Blanca Zetina</td>
@@ -1074,7 +1080,7 @@
                 </tr>
                 <tr>
                     <td class="col-hoyo" data-label="Hoyo">9</td>
-                    <td class="col-horario" data-label="Horario">12:20</td>
+                    <td class="col-horario" data-label="Horario">08:20</td>
                     <td class="col-jugador" data-label="Jugador 1">Rierezz Abbert</td>
                     <td class="col-jugador" data-label="Jugador 2">B depofenet</td>
                     <td class="col-jugador" data-label="Jugador 3"></td>
@@ -1085,72 +1091,6 @@
                 </tr>
                 <tr>
                     <td class="col-hoyo" data-label="Hoyo">10</td>
-                    <td class="col-horario" data-label="Horario">12:20</td>
-                    <td class="col-jugador" data-label="Jugador 1"></td>
-                    <td class="col-jugador" data-label="Jugador 2"></td>
-                    <td class="col-jugador" data-label="Jugador 3"></td>
-                    <td class="col-jugador" data-label="Jugador 4"></td>
-                    <td class="col-jugador" data-label="Jugador 5"></td>
-                    <td class="col-campo" data-label="Campo">Norte</td>
-                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-                </tr>
-                <tr>
-                    <td class="col-hoyo" data-label="Hoyo">11</td>
-                    <td class="col-horario" data-label="Horario">12:20</td>
-                    <td class="col-jugador" data-label="Jugador 1">(T. Marguaz, J. Pulle</td>
-                    <td class="col-jugador" data-label="Jugador 2">U Horrera)</td>
-                    <td class="col-jugador" data-label="Jugador 3">Carlos Muños Jr.</td>
-                    <td class="col-jugador" data-label="Jugador 4"></td>
-                    <td class="col-jugador" data-label="Jugador 5"></td>
-                    <td class="col-campo" data-label="Campo">Norte</td>
-                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-                </tr>
-                <tr>
-                    <td class="col-hoyo" data-label="Hoyo">12</td>
-                    <td class="col-horario" data-label="Horario">12:20</td>
-                    <td class="col-jugador" data-label="Jugador 1">José A. Padruno</td>
-                    <td class="col-jugador" data-label="Jugador 2">Miguel Fierro</td>
-                    <td class="col-jugador" data-label="Jugador 3">Julián Pulido</td>
-                    <td class="col-jugador" data-label="Jugador 4"></td>
-                    <td class="col-jugador" data-label="Jugador 5"></td>
-                    <td class="col-campo" data-label="Campo">Norte</td>
-                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-                </tr>
-                <tr>
-                    <td class="col-hoyo" data-label="Hoyo">13</td>
-                    <td class="col-horario" data-label="Horario">12:20</td>
-                    <td class="col-jugador" data-label="Jugador 1">Mariana Jimenes</td>
-                    <td class="col-jugador" data-label="Jugador 2">José A. Gomrales</td>
-                    <td class="col-jugador" data-label="Jugador 3"></td>
-                    <td class="col-jugador" data-label="Jugador 4"></td>
-                    <td class="col-jugador" data-label="Jugador 5"></td>
-                    <td class="col-campo" data-label="Campo">Norte</td>
-                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-                </tr>
-                <tr>
-                    <td class="col-hoyo" data-label="Hoyo">14</td>
-                    <td class="col-horario" data-label="Horario">08:10</td>
-                    <td class="col-jugador" data-label="Jugador 1">Victoria Motte</td>
-                    <td class="col-jugador" data-label="Jugador 2">Carlos Villanueva</td>
-                    <td class="col-jugador" data-label="Jugador 3">Blanca Zetina</td>
-                    <td class="col-jugador" data-label="Jugador 4"></td>
-                    <td class="col-jugador" data-label="Jugador 5"></td>
-                    <td class="col-campo" data-label="Campo">Norte</td>
-                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-                </tr>
-                <tr>
-                    <td class="col-hoyo" data-label="Hoyo">15</td>
-                    <td class="col-horario" data-label="Horario">08:20</td>
-                    <td class="col-jugador" data-label="Jugador 1"></td>
-                    <td class="col-jugador" data-label="Jugador 2"></td>
-                    <td class="col-jugador" data-label="Jugador 3"></td>
-                    <td class="col-jugador" data-label="Jugador 4"></td>
-                    <td class="col-jugador" data-label="Jugador 5"></td>
-                    <td class="col-campo" data-label="Campo">Norte</td>
-                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-                </tr>
-                <tr>
-                    <td class="col-hoyo" data-label="Hoyo">16</td>
                     <td class="col-horario" data-label="Horario">08:30</td>
                     <td class="col-jugador" data-label="Jugador 1"></td>
                     <td class="col-jugador" data-label="Jugador 2"></td>
@@ -1161,8 +1101,74 @@
                     <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
                 </tr>
                 <tr>
-                    <td class="col-hoyo" data-label="Hoyo">17</td>
+                    <td class="col-hoyo" data-label="Hoyo">11</td>
+                    <td class="col-horario" data-label="Horario">08:40</td>
+                    <td class="col-jugador" data-label="Jugador 1">(T. Marguaz, J. Pulle</td>
+                    <td class="col-jugador" data-label="Jugador 2">U Horrera)</td>
+                    <td class="col-jugador" data-label="Jugador 3">Carlos Muños Jr.</td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">12</td>
                     <td class="col-horario" data-label="Horario">08:50</td>
+                    <td class="col-jugador" data-label="Jugador 1">José A. Padruno</td>
+                    <td class="col-jugador" data-label="Jugador 2">Miguel Fierro</td>
+                    <td class="col-jugador" data-label="Jugador 3">Julián Pulido</td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">13</td>
+                    <td class="col-horario" data-label="Horario">09:00</td>
+                    <td class="col-jugador" data-label="Jugador 1">Mariana Jimenes</td>
+                    <td class="col-jugador" data-label="Jugador 2">José A. Gomrales</td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">14</td>
+                    <td class="col-horario" data-label="Horario">09:10</td>
+                    <td class="col-jugador" data-label="Jugador 1">Victoria Motte</td>
+                    <td class="col-jugador" data-label="Jugador 2">Carlos Villanueva</td>
+                    <td class="col-jugador" data-label="Jugador 3">Blanca Zetina</td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">15</td>
+                    <td class="col-horario" data-label="Horario">09:20</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">16</td>
+                    <td class="col-horario" data-label="Horario">09:30</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">17</td>
+                    <td class="col-horario" data-label="Horario">09:40</td>
                     <td class="col-jugador" data-label="Jugador 1"></td>
                     <td class="col-jugador" data-label="Jugador 2"></td>
                     <td class="col-jugador" data-label="Jugador 3"></td>
@@ -1173,7 +1179,7 @@
                 </tr>
                 <tr>
                     <td class="col-hoyo" data-label="Hoyo">18</td>
-                    <td class="col-horario" data-label="Horario">09:00</td>
+                    <td class="col-horario" data-label="Horario">09:50</td>
                     <td class="col-jugador" data-label="Jugador 1"></td>
                     <td class="col-jugador" data-label="Jugador 2"></td>
                     <td class="col-jugador" data-label="Jugador 3"></td>
@@ -1182,7 +1188,249 @@
                     <td class="col-campo" data-label="Campo">Norte</td>
                     <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
                 </tr>
-            </tbody>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">19</td>
+                    <td class="col-horario" data-label="Horario">10:00</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">20</td>
+                    <td class="col-horario" data-label="Horario">10:10</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">21</td>
+                    <td class="col-horario" data-label="Horario">10:20</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">22</td>
+                    <td class="col-horario" data-label="Horario">10:30</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">23</td>
+                    <td class="col-horario" data-label="Horario">10:40</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">24</td>
+                    <td class="col-horario" data-label="Horario">10:50</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">25</td>
+                    <td class="col-horario" data-label="Horario">11:00</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">26</td>
+                    <td class="col-horario" data-label="Horario">11:10</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">27</td>
+                    <td class="col-horario" data-label="Horario">11:20</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">28</td>
+                    <td class="col-horario" data-label="Horario">11:30</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">29</td>
+                    <td class="col-horario" data-label="Horario">11:40</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">30</td>
+                    <td class="col-horario" data-label="Horario">11:50</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">31</td>
+                    <td class="col-horario" data-label="Horario">12:00</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">32</td>
+                    <td class="col-horario" data-label="Horario">12:10</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">33</td>
+                    <td class="col-horario" data-label="Horario">12:20</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">34</td>
+                    <td class="col-horario" data-label="Horario">12:30</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">35</td>
+                    <td class="col-horario" data-label="Horario">12:40</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">36</td>
+                    <td class="col-horario" data-label="Horario">12:50</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">37</td>
+                    <td class="col-horario" data-label="Horario">13:00</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">38</td>
+                    <td class="col-horario" data-label="Horario">13:10</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">39</td>
+                    <td class="col-horario" data-label="Horario">13:20</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">40</td>
+                    <td class="col-horario" data-label="Horario">13:30</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                </tbody>
         </table>
         </div>
     </div>
@@ -1261,7 +1509,7 @@
                 </tr>
                 <tr>
                     <td class="col-hoyo" data-label="Hoyo">2</td>
-                    <td class="col-horario" data-label="Horario">07:20</td>
+                    <td class="col-horario" data-label="Horario">07:10</td>
                     <td class="col-jugador" data-label="Jugador 1">R. Pérez, S. López</td>
                     <td class="col-jugador" data-label="Jugador 2">E. Hernández</td>
                     <td class="col-jugador" data-label="Jugador 3"></td>
@@ -1272,7 +1520,7 @@
                 </tr>
                 <tr>
                     <td class="col-hoyo" data-label="Hoyo">3</td>
-                    <td class="col-horario" data-label="Horario">07:40</td>
+                    <td class="col-horario" data-label="Horario">07:20</td>
                     <td class="col-jugador" data-label="Jugador 1">Giovanni Rosas</td>
                     <td class="col-jugador" data-label="Jugador 2">Carlos Muñoz Jr.</td>
                     <td class="col-jugador" data-label="Jugador 3">Ivan Talavera</td>
@@ -1283,7 +1531,7 @@
                 </tr>
                 <tr>
                     <td class="col-hoyo" data-label="Hoyo">4</td>
-                    <td class="col-horario" data-label="Horario">07:40</td>
+                    <td class="col-horario" data-label="Horario">07:30</td>
                     <td class="col-jugador" data-label="Jugador 1">José A. Padruno</td>
                     <td class="col-jugador" data-label="Jugador 2">Miguel Fierro</td>
                     <td class="col-jugador" data-label="Jugador 3">Edgar Alvarado</td>
@@ -1294,7 +1542,7 @@
                 </tr>
                 <tr>
                     <td class="col-hoyo" data-label="Hoyo">5</td>
-                    <td class="col-horario" data-label="Horario">07:50</td>
+                    <td class="col-horario" data-label="Horario">07:40</td>
                     <td class="col-jugador" data-label="Jugador 1">Carlos Zamorita</td>
                     <td class="col-jugador" data-label="Jugador 2">Fernando Gonzales</td>
                     <td class="col-jugador" data-label="Jugador 3">Julián Pulido</td>
@@ -1305,7 +1553,7 @@
                 </tr>
                 <tr>
                     <td class="col-hoyo" data-label="Hoyo">6</td>
-                    <td class="col-horario" data-label="Horario">08:00</td>
+                    <td class="col-horario" data-label="Horario">07:50</td>
                     <td class="col-jugador" data-label="Jugador 1">Jorge Mandrigal</td>
                     <td class="col-jugador" data-label="Jugador 2">José A. Ramírez</td>
                     <td class="col-jugador" data-label="Jugador 3">Blanca Zetina</td>
@@ -1338,7 +1586,7 @@
                 </tr>
                 <tr>
                     <td class="col-hoyo" data-label="Hoyo">9</td>
-                    <td class="col-horario" data-label="Horario">12:20</td>
+                    <td class="col-horario" data-label="Horario">08:20</td>
                     <td class="col-jugador" data-label="Jugador 1">Rierezz Abbert</td>
                     <td class="col-jugador" data-label="Jugador 2">B depofenet</td>
                     <td class="col-jugador" data-label="Jugador 3"></td>
@@ -1349,72 +1597,6 @@
                 </tr>
                 <tr>
                     <td class="col-hoyo" data-label="Hoyo">10</td>
-                    <td class="col-horario" data-label="Horario">12:20</td>
-                    <td class="col-jugador" data-label="Jugador 1"></td>
-                    <td class="col-jugador" data-label="Jugador 2"></td>
-                    <td class="col-jugador" data-label="Jugador 3"></td>
-                    <td class="col-jugador" data-label="Jugador 4"></td>
-                    <td class="col-jugador" data-label="Jugador 5"></td>
-                    <td class="col-campo" data-label="Campo">Norte</td>
-                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-                </tr>
-                <tr>
-                    <td class="col-hoyo" data-label="Hoyo">11</td>
-                    <td class="col-horario" data-label="Horario">12:20</td>
-                    <td class="col-jugador" data-label="Jugador 1">(T. Marguaz, J. Pulle</td>
-                    <td class="col-jugador" data-label="Jugador 2">U Horrera)</td>
-                    <td class="col-jugador" data-label="Jugador 3">Carlos Muños Jr.</td>
-                    <td class="col-jugador" data-label="Jugador 4"></td>
-                    <td class="col-jugador" data-label="Jugador 5"></td>
-                    <td class="col-campo" data-label="Campo">Norte</td>
-                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-                </tr>
-                <tr>
-                    <td class="col-hoyo" data-label="Hoyo">12</td>
-                    <td class="col-horario" data-label="Horario">12:20</td>
-                    <td class="col-jugador" data-label="Jugador 1">José A. Padruno</td>
-                    <td class="col-jugador" data-label="Jugador 2">Miguel Fierro</td>
-                    <td class="col-jugador" data-label="Jugador 3">Julián Pulido</td>
-                    <td class="col-jugador" data-label="Jugador 4"></td>
-                    <td class="col-jugador" data-label="Jugador 5"></td>
-                    <td class="col-campo" data-label="Campo">Norte</td>
-                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-                </tr>
-                <tr>
-                    <td class="col-hoyo" data-label="Hoyo">13</td>
-                    <td class="col-horario" data-label="Horario">12:20</td>
-                    <td class="col-jugador" data-label="Jugador 1">Mariana Jimenes</td>
-                    <td class="col-jugador" data-label="Jugador 2">José A. Gomrales</td>
-                    <td class="col-jugador" data-label="Jugador 3"></td>
-                    <td class="col-jugador" data-label="Jugador 4"></td>
-                    <td class="col-jugador" data-label="Jugador 5"></td>
-                    <td class="col-campo" data-label="Campo">Norte</td>
-                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-                </tr>
-                <tr>
-                    <td class="col-hoyo" data-label="Hoyo">14</td>
-                    <td class="col-horario" data-label="Horario">08:10</td>
-                    <td class="col-jugador" data-label="Jugador 1">Victoria Motte</td>
-                    <td class="col-jugador" data-label="Jugador 2">Carlos Villanueva</td>
-                    <td class="col-jugador" data-label="Jugador 3">Blanca Zetina</td>
-                    <td class="col-jugador" data-label="Jugador 4"></td>
-                    <td class="col-jugador" data-label="Jugador 5"></td>
-                    <td class="col-campo" data-label="Campo">Norte</td>
-                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-                </tr>
-                <tr>
-                    <td class="col-hoyo" data-label="Hoyo">15</td>
-                    <td class="col-horario" data-label="Horario">08:20</td>
-                    <td class="col-jugador" data-label="Jugador 1"></td>
-                    <td class="col-jugador" data-label="Jugador 2"></td>
-                    <td class="col-jugador" data-label="Jugador 3"></td>
-                    <td class="col-jugador" data-label="Jugador 4"></td>
-                    <td class="col-jugador" data-label="Jugador 5"></td>
-                    <td class="col-campo" data-label="Campo">Norte</td>
-                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
-                </tr>
-                <tr>
-                    <td class="col-hoyo" data-label="Hoyo">16</td>
                     <td class="col-horario" data-label="Horario">08:30</td>
                     <td class="col-jugador" data-label="Jugador 1"></td>
                     <td class="col-jugador" data-label="Jugador 2"></td>
@@ -1425,8 +1607,74 @@
                     <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
                 </tr>
                 <tr>
-                    <td class="col-hoyo" data-label="Hoyo">17</td>
+                    <td class="col-hoyo" data-label="Hoyo">11</td>
+                    <td class="col-horario" data-label="Horario">08:40</td>
+                    <td class="col-jugador" data-label="Jugador 1">(T. Marguaz, J. Pulle</td>
+                    <td class="col-jugador" data-label="Jugador 2">U Horrera)</td>
+                    <td class="col-jugador" data-label="Jugador 3">Carlos Muños Jr.</td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">12</td>
                     <td class="col-horario" data-label="Horario">08:50</td>
+                    <td class="col-jugador" data-label="Jugador 1">José A. Padruno</td>
+                    <td class="col-jugador" data-label="Jugador 2">Miguel Fierro</td>
+                    <td class="col-jugador" data-label="Jugador 3">Julián Pulido</td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">13</td>
+                    <td class="col-horario" data-label="Horario">09:00</td>
+                    <td class="col-jugador" data-label="Jugador 1">Mariana Jimenes</td>
+                    <td class="col-jugador" data-label="Jugador 2">José A. Gomrales</td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">14</td>
+                    <td class="col-horario" data-label="Horario">09:10</td>
+                    <td class="col-jugador" data-label="Jugador 1">Victoria Motte</td>
+                    <td class="col-jugador" data-label="Jugador 2">Carlos Villanueva</td>
+                    <td class="col-jugador" data-label="Jugador 3">Blanca Zetina</td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">15</td>
+                    <td class="col-horario" data-label="Horario">09:20</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">16</td>
+                    <td class="col-horario" data-label="Horario">09:30</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">17</td>
+                    <td class="col-horario" data-label="Horario">09:40</td>
                     <td class="col-jugador" data-label="Jugador 1"></td>
                     <td class="col-jugador" data-label="Jugador 2"></td>
                     <td class="col-jugador" data-label="Jugador 3"></td>
@@ -1437,7 +1685,7 @@
                 </tr>
                 <tr>
                     <td class="col-hoyo" data-label="Hoyo">18</td>
-                    <td class="col-horario" data-label="Horario">09:00</td>
+                    <td class="col-horario" data-label="Horario">09:50</td>
                     <td class="col-jugador" data-label="Jugador 1"></td>
                     <td class="col-jugador" data-label="Jugador 2"></td>
                     <td class="col-jugador" data-label="Jugador 3"></td>
@@ -1446,7 +1694,249 @@
                     <td class="col-campo" data-label="Campo">Norte</td>
                     <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
                 </tr>
-            </tbody>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">19</td>
+                    <td class="col-horario" data-label="Horario">10:00</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">20</td>
+                    <td class="col-horario" data-label="Horario">10:10</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">21</td>
+                    <td class="col-horario" data-label="Horario">10:20</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">22</td>
+                    <td class="col-horario" data-label="Horario">10:30</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">23</td>
+                    <td class="col-horario" data-label="Horario">10:40</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">24</td>
+                    <td class="col-horario" data-label="Horario">10:50</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">25</td>
+                    <td class="col-horario" data-label="Horario">11:00</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">26</td>
+                    <td class="col-horario" data-label="Horario">11:10</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">27</td>
+                    <td class="col-horario" data-label="Horario">11:20</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">28</td>
+                    <td class="col-horario" data-label="Horario">11:30</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">29</td>
+                    <td class="col-horario" data-label="Horario">11:40</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">30</td>
+                    <td class="col-horario" data-label="Horario">11:50</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">31</td>
+                    <td class="col-horario" data-label="Horario">12:00</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">32</td>
+                    <td class="col-horario" data-label="Horario">12:10</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">33</td>
+                    <td class="col-horario" data-label="Horario">12:20</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">34</td>
+                    <td class="col-horario" data-label="Horario">12:30</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">35</td>
+                    <td class="col-horario" data-label="Horario">12:40</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">36</td>
+                    <td class="col-horario" data-label="Horario">12:50</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">37</td>
+                    <td class="col-horario" data-label="Horario">13:00</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">38</td>
+                    <td class="col-horario" data-label="Horario">13:10</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">39</td>
+                    <td class="col-horario" data-label="Horario">13:20</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                <tr>
+                    <td class="col-hoyo" data-label="Hoyo">40</td>
+                    <td class="col-horario" data-label="Horario">13:30</td>
+                    <td class="col-jugador" data-label="Jugador 1"></td>
+                    <td class="col-jugador" data-label="Jugador 2"></td>
+                    <td class="col-jugador" data-label="Jugador 3"></td>
+                    <td class="col-jugador" data-label="Jugador 4"></td>
+                    <td class="col-jugador" data-label="Jugador 5"></td>
+                    <td class="col-campo" data-label="Campo">Norte</td>
+                    <td class="col-detalles celda-tiempo-real" data-label="Detalles">--:-- --</td>
+                </tr>
+                </tbody>
         </table>
         </div>
     </div>
@@ -1604,9 +2094,17 @@
       window.addEventListener('DOMContentLoaded', () => {
           Object.keys(configTablas).forEach(numTabla => {
               const cfg = configTablas[numTabla];
+              const filasPlantillaActual = document.querySelectorAll(`#${cfg.idCuerpo} tr`).length;
               const tablaGuardada = localStorage.getItem(cfg.keyDatos);
               if (tablaGuardada) {
-                  document.getElementById(cfg.idCuerpo).innerHTML = tablaGuardada;
+                  const filasGuardadas = (tablaGuardada.match(/<tr>/g) || []).length;
+                  if (filasGuardadas === filasPlantillaActual) {
+                      document.getElementById(cfg.idCuerpo).innerHTML = tablaGuardada;
+                  } else {
+                      // La estructura guardada tiene un número distinto de filas (versión antigua):
+                      // se descarta para que la plantilla actual (30 filas) se muestre completa.
+                      localStorage.removeItem(cfg.keyDatos);
+                  }
               }
               corregirFilasDeCompetenciaAntiguas(numTabla);
               inicializarColumnaHorario(numTabla);
